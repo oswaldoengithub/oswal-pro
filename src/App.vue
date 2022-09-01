@@ -78,12 +78,6 @@
 </template>
 
 <script>
-const port = process.env.PORT || 3000;
-
-Express.listen(port, ()=>{
-    console.log('servidor a su servicio en el puerto', port);
-})
-
 export default {
   data: () => ({
     drawer: false,
@@ -113,4 +107,9 @@ export default {
     },
   },
 };
+const port = process.env.PORT || 3000;
+
+Express.listen(port, ()=>{
+    console.log('servidor a su servicio en el puerto', port);
+    })
 </script>
