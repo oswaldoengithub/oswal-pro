@@ -78,7 +78,7 @@
 </template>
 
 <script>
-const port = process.env.PORT || 3000;
+///const port = process.env.PORT || 3000;
 export default {
   data: () => ({
     drawer: false,
@@ -109,7 +109,7 @@ export default {
   },
 };
 
-App.listen(port, ()=>{
+/*App.listen(port, ()=>{
     console.log('servidor a su servicio en el puerto', port);
-    })
+    })*/
 </script>
