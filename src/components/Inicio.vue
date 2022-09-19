@@ -4,8 +4,7 @@
     <v-container>
       <v-row align="center" justify="center">
         <v-col cols="12" md="8" sm="8">
-          <v-card class="elevation-12">
-            
+          <v-card class="elevation-12">            
             <v-card-text class="mt-12">
               <h1 class="text-center display-2 teal--text text--accent-3">
                 inicia sesion
@@ -32,57 +31,71 @@
               <h4 class="text-center mlt-4">
                 Siguenos en nuestras Redes Sociales
               </h4>
+            </v-card-text>
               <v-form 
+                @submit.prevent="submitHandler"
                 ref="formulario"
                 v-model="validar"
                 lazy-validation
               >
-                <v-text-field
-                  label="E-mail"
-                  name="Email"
-                  prepend-icon="email"
-                  type="text"
-                  color="primary"
-                  v-model="email"
-                  :rules="emailRules"
-                  required
-                />
+                <v-card-text >
+                  <v-text-field
+                    label="E-mail"
+                    name="Email"
+                    prepend-icon="email"
+                    type="text"
+                    color="primary"
+                    v-model="email"
+                    :rules="emailRules"
+                    required
+                  />
 
-                <v-text-field
-                  id="contraseña"
-                  label="contraseña"
-                  name="Contraseña"
-                  :type="showpassword ? 'text' : 'password'"
-                  color="primary"
-                  prepend-icon="lock"
-                  :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'"
-                  @click:append="showpassword = !showpassword"
-                  v-model="contraseña"
-                  :rules="contrasenaRules"
-                  required
-                />
-                <v-checkbox label="Recuerdame" class="mt-n1" color="primary"></v-checkbox>
+                  <v-text-field
+                    id="contraseña"
+                    label="contraseña"
+                    name="Contraseña"
+                    :type="showpassword ? 'text' : 'password'"
+                    color="primary"
+                    prepend-icon="lock"
+                    :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="showpassword = !showpassword"
+                    v-model="contraseña"
+                    :rules="contrasenaRules"
+                    required
+                  />
+                    <v-switch 
+                    label="Recuerdame"
+                    class="mt-n1" 
+                    color="primary"
+                    >
+                    </v-switch>
+                    <div class="text-center ">
+                      <v-btn x-small text rounded outlined class="text-center mt-3"
+                        >Olvidé mi Contraseña?</v-btn
+                      >
+                    </div>
+                    <div class="text-center pb-2">
+                      <v-btn x-small text rounded outlined class="text-center mt-3"
+                        >Registrate</v-btn
+                      >
+                    </div>
+                      <v-card-actions class="justify-center ">
+                    <div>
+                      <v-btn 
+                      :loading="cargando"
+                      type="submit" 
+                      rounded color="primary"
+                      >Ingresar
+                      </v-btn>
+                    </div>
+                  </v-card-actions>
+                </v-card-text>  
               </v-form>
-            </v-card-text>
-              <div class="text-center ">
-                <v-btn x-small text rounded outlined class="text-center mt-3"
-                  >Olvidé mi Contraseña?</v-btn
-                >
-              </div>
-              <div class="text-center pb-2">
-                <v-btn x-small text rounded outlined class="text-center mt-3"
-                  >Registrate</v-btn
-                >
-              </div>
-
-              <div class="text-center pb-2">
-                <v-btn @click="ingreso" rounded color="primary">Ingresar</v-btn>
-              </div>
-            
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <v-snackbar top v-model="snackbar">inicio de sesion con exito</v-snackbar>
     <!--**********FIN CUADRO INICIO DE SESION**********-->
   </v-app>
 </template>
@@ -92,12 +105,13 @@ export default {
   name: 'Inicio',
   data: () => ({
     drawer: false,
-    group: null,
-    validar: true,
+    group: null,    
     showpassword: false,
     error:false,
     error_msg:"",
     validar: true,
+    cargando:false,
+    snackbar:false,
     email:"",
     emailRules: [
       v => !!v || 'E-mail Requerida',
@@ -106,14 +120,23 @@ export default {
     contraseña:"",
     contrasenaRules: [
         v => !!v || 'Contraseña Requerida',
-        v => /^.{4,12}$/ || 'Tu Contraseña debe ser mayor de 4 y menor de 12 caracteres',        
+        v => (v && v.length >= 4) || 'Tu Contraseña debe ser mayor de 4 caracteres',        
       ],
         
   }),
   methods:{
-    ingreso () {
-      this.$refs.formulario.validate()
-      console.log("hola")
+    submitHandler(){
+      if (this.$refs.formulario.validate()) {
+          this.cargando= true
+          console.log(this.email, this.contraseña)
+        setTimeout(handler=()=>{
+          this.cargando= false
+          this.snackbar= true
+        }, timeout= 3000)
+      }
+      
+    },
+    /*ingreso () {
     },
     /*reset () {
       this.$refs.formulario.reset()
