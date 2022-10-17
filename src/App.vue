@@ -1,6 +1,6 @@
 <template>
   <v-app>   
-    <div>
+    <div xs="12" md="8" sm="8">
       <v-app-bar color="primary" dark>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-container>

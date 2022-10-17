@@ -82,8 +82,9 @@
                       <v-card-actions class="justify-center ">
                     <div>
                       <v-btn 
-                      :loading="cargando"
-                      type="submit" 
+                      :disabled ="!validar"
+                      :loading ="cargando"
+                      type ="submit" 
                       rounded color="primary"
                       >Ingresar
                       </v-btn>
@@ -95,7 +96,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-snackbar top v-model="snackbar">inicio de sesion con exito</v-snackbar>
+    <v-snackbar top color="green darken-2" v-model="snackbar">inicio de sesion con exito</v-snackbar>
     <!--**********FIN CUADRO INICIO DE SESION**********-->
   </v-app>
 </template>
@@ -111,7 +112,7 @@ export default {
     error_msg:"",
     validar: true,
     cargando:false,
-    snackbar:false,
+    snackbar:false,    
     email:"",
     emailRules: [
       v => !!v || 'E-mail Requerida',
@@ -129,22 +130,14 @@ export default {
       if (this.$refs.formulario.validate()) {
           this.cargando= true
           console.log(this.email, this.contraseña)
-        setTimeout(handler=()=>{
+        setTimeout(this.handler=()=>{
           this.cargando= false
           this.snackbar= true
-        }, timeout= 3000)
-      }
-      
-    },
-    /*ingreso () {
-    },
-    /*reset () {
-      this.$refs.formulario.reset()
-      
-    },
-   /* resetValidation () {
-      this.$refs.formulario.resetValidation()
-    }  */  
+        }, 
+        this.timeout= 1500,
+        this.$refs.formulario.reset())      
+      }           
+    }     
   },
 
   watch: {
