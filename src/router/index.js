@@ -45,8 +45,11 @@ const routes = [
     name: 'carnet',
     component: () => import('../views/Carnet.vue')
   },
-  
-  
+  {
+    path: '/olvido',
+    name: 'olvido',
+    component: () => import('../views/Olvido.vue')
+  }
   
 ]
 

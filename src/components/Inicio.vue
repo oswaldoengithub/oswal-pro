@@ -15,7 +15,7 @@
                   inicia sesion
                 </h1>
                 <div class="text-center" mt-4>
-                  <v-btn class="mx-2" fab small outlined color="primary">
+                  <v-btn class="mx-2" fab small outlined color="indigo">
                     <v-icon dark> mdi-facebook </v-icon>
                   </v-btn>
 
@@ -23,13 +23,13 @@
                     <v-icon dark> mdi-google </v-icon>
                   </v-btn>
 
-                  <v-btn class="mx-2" fab dark small outlined color="pink">
+                  <v-btn class="mx-2" fab dark small outlined color="blue">
                     <v-icon dark> mdi-twitter </v-icon>
                   </v-btn>
-                  <v-btn class="mx-2" fab dark small outlined color="pink">
+                  <v-btn class="mx-2" fab dark small outlined color="blue darken-2">
                     <v-icon dark> mdi-linkedin </v-icon>
                   </v-btn>
-                  <v-btn class="mx-2" fab dark small outlined color="pink">
+                  <v-btn class="mx-2" fab dark small outlined color="pink darken-4">
                     <v-icon dark> mdi-instagram </v-icon>
                   </v-btn>
                 </div>
@@ -76,6 +76,7 @@
                       </v-switch>
                       <div class="text-center ">
                         <v-btn x-small text rounded outlined class="text-center mt-3"
+                          :to="{ name: 'olvido' }"
                           >Olvidé mi Contraseña?</v-btn
                         >
                       </div>

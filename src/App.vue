@@ -1,20 +1,16 @@
 <template>
-  <v-app>   
-    <div xs="12" md="8" sm="8">
-      <v-app-bar color="primary" dark>
+  <v-app> 
+    <v-system-bar app>
+      </v-system-bar>  
+    <!-- <div xs="12" md="8" sm="8"> -->
+      <v-app-bar color="primary" dark app>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-container>
-          <v-row class="text-center">
-            <v-col>
-              <h1>PAGUINA WEB DE OSWALDO EN VUETIFY</h1>
-            </v-col>
-          </v-row>
-        </v-container>
+          <v-toolbar-title>PAGUINA WEB DE OSWALDO EN VUETIFY</v-toolbar-title>
       </v-app-bar>
        <!--**********INICIO CARRUSEL**********-->
     <v-carousel
       cycle
-      height="200"
+      height="300"
       hide-delimiter-background
       show-arrows-on-hover
     >
@@ -34,7 +30,7 @@
       <v-navigation-drawer
         v-model="drawer"
         dark
-        absolute
+        fixed
         bottom
         temporary
         src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
@@ -71,7 +67,7 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-    </div>
+    <!-- </div> -->
     <!--**********FIN NAVIGATION DRAWER (CAJONES DE NAVEGACION)********-->
     <v-main>
       <router-view />
