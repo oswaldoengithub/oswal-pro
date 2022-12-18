@@ -102,7 +102,7 @@
         </v-row>
       </v-dialog>
     </v-container>
-    <v-snackbar  color="green darken-2" v-model="snackbar">inicio de sesion con exito</v-snackbar>
+    <v-snackbar  color="green darken-2" v-model="snackbar">inicio de sesion exitoso</v-snackbar>
     <!--**********FIN CUADRO INICIO DE SESION**********-->
   </v-app>
 </template>
@@ -135,7 +135,7 @@ export default {
     submitHandler(){
       if (this.$refs.formulario.validate()) {
           this.cargando = true
-          // console.log(this.email, this.contraseña)
+          console.log(this.email, this.contraseña)
         setTimeout(this.handler = () => {
           this.cargando = false
           this.snackbar = true

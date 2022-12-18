@@ -29,7 +29,7 @@
       </v-carousel-item>
     </v-carousel>
 
-    <!--**********FIN CARRUSEL**********-->
+                     <!--**********FIN CARRUSEL**********-->
       <!--**********INICIO NAVIGATION DRAWER (CAJONES DE NAVEGACION)********-->
       <v-navigation-drawer
         v-model="drawer"
