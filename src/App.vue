@@ -47,8 +47,10 @@
             <v-spacer></v-spacer>
 
             <v-list-item-content class="my-5">
-              <v-btn text block :to="{ name: 'home' }" exact>Inicio</v-btn>
-              <v-btn text block :to="{ name: 'eventos' }">Eventos</v-btn>
+             <!--  <v-btn text block :to="{ name: 'home' }" exact
+                >Inicio</v-btn> -->
+              <v-btn text block :to="{ name: 'eventos' }"
+                >Eventos</v-btn>
               <v-btn text block :to="{ name: 'participantes' }"
                 >Participantes</v-btn
               >
